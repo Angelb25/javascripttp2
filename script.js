@@ -66,7 +66,7 @@ function afficherCV(profil) {
 }
 // Fonction pour charger les infos GitHub
 function chargerGithub(username) {
-  console.log("🔍 Chargement des données GitHub...");
+  console.log(" Chargement des données GitHub...");
 
   fetch(`https://api.github.com/users/${username}`)
     .then(response => {
@@ -76,11 +76,11 @@ function chargerGithub(username) {
       return response.json();
     })
     .then(data => {
-      console.log("✅ Données GitHub :", data);
+      console.log(" Données GitHub :", data);
       afficherBlocGithub(data);
     })
     .catch(error => {
-      console.error("❌ Erreur GitHub :", error);
+      console.error(" Erreur GitHub :", error);
     });
 }
 
@@ -108,13 +108,6 @@ function afficherBlocGithub(data) {
   repos.innerHTML = `<strong>Dépôts publics :</strong> ${data.public_repos}`;
   githubDiv.appendChild(repos);
 
-  // Lien vers le profil
-  const lien = document.createElement('a');
-  lien.href = data.html_url;
-  lien.textContent = "Voir le profil GitHub";
-  lien.target = "_blank";
-  lien.style.color = "#007bff";
-  githubDiv.appendChild(lien);
 
   // Ajout du bloc au CV existant
   const cv = document.getElementById('cv');
